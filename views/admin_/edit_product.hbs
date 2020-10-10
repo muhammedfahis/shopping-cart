@@ -1,0 +1,29 @@
+<section>
+    <div class="container">
+        <form action="/admin/upload_product/{{response._id}}" method="post" enctype="multipart/form-data">
+            <label for="name">name</label>
+            <br>
+            <input type="text" name="name" value="{{response.name}}">
+            <br>
+
+            <label for="category">category</label>
+            <br>
+            <input type="text" name="category" value="{{response.category}}">
+            <br>
+            <label for="description">description</label>
+            <br>
+            <input type="text" name="description" value="{{response.description}}">
+            <br>
+            <label for="price">Price</label>
+            <br>
+            <input type="text" name="price" value="{{response.price}}">
+            <br>
+            <label for="image"> image</label>
+            <br>
+            <input type="file" name="image">
+            <img src="/product-images/{{response._id}}.jpg" alt="">
+            <br>
+            <button type="submit" class="btn btn-success">Edit</button>
+        </form>
+    </div>
+</section>

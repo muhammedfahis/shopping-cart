@@ -8,6 +8,7 @@ var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
 var fileUpload = require('express-fileupload');
 var db = require('./config/connection');
+var session = require('express-session');
 
 var app = express();
 
@@ -15,7 +16,14 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.engine('hbs',hbs({extname:'hbs',defaultLayout:'main',layoutsDir:__dirname+'/views/layouts/',partialsDir:__dirname+'/views/partials/'}))
-
+app.use(session({
+  secret:'key',
+  saveUninitialized:false,
+  resave:false,
+  cookie:{
+    maxAge:600000000
+  }
+}))
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
